@@ -53,6 +53,12 @@ For debs, rpms, and static builds, see the [downloads page](https://github.com/g
 3. Make install:
     * `sudo make install`
 
+If you want to run the test suite:
+
+1. Install [cram](http://bitheap.org/cram/)
+2. `cd tests`
+3. `cram *.t`
+
 ## Current development status ##
 
 It's quite stable now. Most changes are new features, minor bug fixes, or performance improvements. It's much faster than Ack in my benchmarks.
