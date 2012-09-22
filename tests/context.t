@@ -33,6 +33,20 @@ Change the lines before with --before:
   ./foo:3-c
   ./foo:4-d
   ./foo:5:e
+  $ ag -B 0 e
+  ./foo:5:e
+  $ ag -B 1 e
+  ./foo:4-d
+  ./foo:5:e
+  $ ag -B 2 e
+  ./foo:3-c
+  ./foo:4-d
+  ./foo:5:e
+  $ ag -B 3 e
+  ./foo:2-b
+  ./foo:3-c
+  ./foo:4-d
+  ./foo:5:e
 
 Change the lines after with --after:
 
@@ -46,6 +60,20 @@ Change the lines after with --after:
   ./foo:6-f
   ./foo:7-g
   $ ag --after=3 e
+  ./foo:5:e
+  ./foo:6-f
+  ./foo:7-g
+  ./foo:8-h
+  $ ag -A 0 e
+  ./foo:5:e
+  $ ag -A 1 e
+  ./foo:5:e
+  ./foo:6-f
+  $ ag -A 2 e
+  ./foo:5:e
+  ./foo:6-f
+  ./foo:7-g
+  $ ag -A 3 e
   ./foo:5:e
   ./foo:6-f
   ./foo:7-g
@@ -149,5 +177,18 @@ Later options override earlier ones:
   ./foo:6-f
   ./foo:7-g
   $ ag --after 1 --after 2 --after 0 e
+  ./foo:5:e
+
+  $ ag --before 1 -B 2 e
+  ./foo:3-c
+  ./foo:4-d
+  ./foo:5:e
+  $ ag --before 1 -B 2 --before 0 e
+  ./foo:5:e
+  $ ag --after 1 -A 2 e
+  ./foo:5:e
+  ./foo:6-f
+  ./foo:7-g
+  $ ag --after 1 -A 2 --after 0 e
   ./foo:5:e
 
